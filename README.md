@@ -5,4 +5,5 @@ Pour l'instant il y en a seulement 2 :
 (bien plus rapide que de le faire à la main).
 
 PS : la fonction date peut être utilisée pour n'importe quel autre automate avec un .txt différent (à l'exception du format qui reste le même), il suffit de changer l'inputStream.
+
 Je reviendrai peut-être dessus un jour pour implémenter correctement le delta et l'utiliser pour un toString, et rajouter d'autres automates.
