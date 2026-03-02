@@ -1,8 +1,9 @@
 Petit projet où j'ai décidé de faire des automates en kotlin.
-Pour l'instant il y en a seulement 2 :  
+Pour l'instant il y en a trois :  
 - le premier étant un simple automate qui reconnaît des emojis faits à la main dans MonApplication.kt et AutomateSmiley
-- le deuxième étant un automate qui reconnaît les jours/mois au format JJ:MM, la fonction AutomateDate utilise AutomateTXT 
-qui lit le fichier donné en paramètre et crée l'automate automatiquement (bien plus rapide que de le faire à la main).
+- le deuxième étant un automate qui reconnaît les jours/mois au format JJ:MM, la fonction AutomateDate utilise AutomateTXT
+qui lit le fichier donné en paramètre et crée l'automate automatiquement (bien plus rapide que de le faire à la main)
+- le troisième étant un automate qui reconnaît les plaques d'immatriculations au format SIV, celui-ci utilise aussi AutomateTXT
 
 PS : la fonction date peut être utilisée pour n'importe quel autre automate avec un .txt différent (à l'exception du format qui reste le même), il suffit de changer l'inputStream.
 

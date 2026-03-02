@@ -36,6 +36,10 @@ fun AutomateDate(): Automate {
     return AutomateTXT("src/date.txt")
 }
 
+fun AutomatePlaque(): Automate {
+    return AutomateTXT("src/plaque.txt")
+}
+
 fun AutomateTXT(path: String): Automate {
     val inputStream: InputStream = File(path).inputStream()
 
