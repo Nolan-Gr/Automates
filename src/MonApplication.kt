@@ -33,8 +33,11 @@ fun AutomateSmiley(): Automate{
 }
 
 fun AutomateDate(): Automate {
+    return AutomateTXT("src/date.txt")
+}
 
-    val inputStream: InputStream = File("src/date.txt").inputStream()
+fun AutomateTXT(path: String): Automate {
+    val inputStream: InputStream = File(path).inputStream()
 
     val etats = mutableMapOf<String, Etat>()
     val etatsFinaux = mutableSetOf<Etat>()
@@ -44,9 +47,9 @@ fun AutomateDate(): Automate {
 
     inputStream.bufferedReader().forEachLine { line ->
 
-        if (line.isBlank()) return@forEachLine
+        if (line.isBlank()) return@forEachLine //continue si la ligne est vide, sinon y'a erreur pr le else
 
-        val mots = line.trim().split(Regex("\\s+"))
+        val mots = line.trim().split(" ")
 
         when (mots[0]) {
 
@@ -75,13 +78,21 @@ fun AutomateDate(): Automate {
             }
 
             else -> {
-                if (mots.size < 3) return@forEachLine
+                val from = etats[mots[0]]
+                val to = etats[mots[mots.size - 1]]
 
-                val from = etats.getOrPut(mots[0]) { Etat(mots[0]) }
-                val symbol = mots[1][0]
-                val to = etats.getOrPut(mots[2]) { Etat(mots[2]) }
+                if (from == null) {
+                    error("état ${mots[0]} pas défini")
+                }
 
-                from.ajouterTransition(symbol, to)
+                if (to == null) {
+                    error("état ${mots[mots.size - 1]} pas défini")
+                }
+
+                for (i in 1 until mots.size) {
+                    val symbol = mots[i][0]
+                    from.ajouterTransition(symbol, to)
+                }
             }
         }
     }
